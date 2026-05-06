@@ -13,14 +13,14 @@ LLM engineers change prompts constantly but track them nowhere. There is no `git
 ## Install
 
 ```bash
-pip install promptvc
+pip install prompt-version-control
 ```
 
 Optional extras:
 
 ```bash
-pip install "promptvc[yaml]"   # YAML export support
-pip install "promptvc[s3]"     # S3 remote sync
+pip install "prompt-version-control[yaml]"   # YAML export support
+pip install "prompt-version-control[s3]"     # S3 remote sync
 ```
 
 ## Quick Start

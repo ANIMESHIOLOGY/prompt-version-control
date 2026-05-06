@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "promptvc"
+name = "prompt-version-control"
 version = "0.1.0"
 description = "Git for your prompts. Version, diff, rollback, and ship prompts like code."
 readme = "README.md"
