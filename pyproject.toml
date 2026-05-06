@@ -36,6 +36,7 @@ dev = [
     "mypy",
 ]
 yaml = ["pyyaml>=6.0"]
+s3 = ["boto3>=1.26.0"]
 
 [project.scripts]
 promptvc = "promptvc.cli:app"

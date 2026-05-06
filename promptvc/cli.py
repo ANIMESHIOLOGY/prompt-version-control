@@ -9,6 +9,8 @@ from promptvc.commands import (
     init,
     list_prompts,
     log,
+    pull,
+    push,
     rollback,
     search,
     show,
@@ -34,6 +36,8 @@ app.command("env")(env.run)
 app.command("export")(export.run)
 app.command("tag")(tag.run)
 app.command("search")(search.run)
+app.command("push")(push.run)
+app.command("pull")(pull.run)
 
 if __name__ == "__main__":
     app()
