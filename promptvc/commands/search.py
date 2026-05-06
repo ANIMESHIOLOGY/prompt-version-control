@@ -1,6 +1,5 @@
 import typer
 from rich.table import Table
-from rich.text import Text
 
 from promptvc.db.connection import get_connection
 from promptvc.utils.console import check_init, console

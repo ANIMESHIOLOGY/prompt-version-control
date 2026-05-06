@@ -3,7 +3,6 @@ import subprocess
 from typing import Optional
 
 import typer
-from rich.table import Table
 
 from promptvc.core.hasher import sha256
 from promptvc.core.tokenizer import count_tokens
