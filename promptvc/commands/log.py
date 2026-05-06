@@ -11,6 +11,7 @@ def run(
     name: str = typer.Argument(..., help="Prompt name"),
     env: Optional[str] = typer.Option(None, "--env", "-e", help="Filter by environment"),
     limit: int = typer.Option(20, "--limit", "-n", help="Max versions to show"),
+    json_output: bool = typer.Option(False, "--json", help="Output as JSON"),
 ) -> None:
     """Show version history for a prompt."""
     check_init()
@@ -36,6 +37,22 @@ def run(
         params.append(limit)
 
         rows = conn.execute(query, params).fetchall()
+
+    if json_output:
+        import json
+        print(json.dumps([
+            {
+                "version_num": r["version_num"],
+                "message": r["message"],
+                "author": r["author"],
+                "environment": r["environment"],
+                "token_count": r["token_count"],
+                "created_at": r["created_at"],
+                "tags": r["tags"],
+            }
+            for r in rows
+        ]))
+        return
 
     if not rows:
         console.print(f'[yellow]⚠[/]  No versions found for [cyan]"{name}"[/].')

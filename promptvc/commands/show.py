@@ -14,6 +14,7 @@ def run(
     name: str = typer.Argument(..., help="Prompt name"),
     version: Optional[int] = typer.Option(None, "--version", "-v", help="Version number"),
     tag: Optional[str] = typer.Option(None, "--tag", "-t", help="Tag name"),
+    json_output: bool = typer.Option(False, "--json", help="Output as JSON"),
 ) -> None:
     """Show prompt content at a specific version (defaults to latest)."""
     check_init()
@@ -29,6 +30,21 @@ def run(
 
     if row is None:
         raise typer.Exit(1)
+
+    if json_output:
+        import json
+        print(json.dumps({
+            "version_num": row["version_num"],
+            "content": row["content"],
+            "message": row["message"],
+            "environment": row["environment"],
+            "token_count": row["token_count"],
+            "model_hint": row["model_hint"],
+            "author": row["author"],
+            "content_hash": row["content_hash"],
+            "created_at": row["created_at"],
+        }))
+        return
 
     meta = Table(border_style="dim", show_header=False)
     meta.add_column("Field", style="bold cyan")

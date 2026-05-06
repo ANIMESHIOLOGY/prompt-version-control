@@ -1,0 +1,102 @@
+{
+  "name": "promptvc",
+  "displayName": "PromptVC",
+  "description": "Git for your prompts. Version, diff, and rollback prompts inside VS Code.",
+  "version": "0.1.0",
+  "publisher": "animeshiology",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "keywords": ["prompt", "llm", "version control", "ai", "genai", "promptops"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ANIMESHIOLOGY/prompt-version-control"
+  },
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "promptvc.promptsView",
+          "name": "PromptVC",
+          "contextualTitle": "Prompt Version Control"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "promptvc.refresh",
+        "title": "Refresh",
+        "icon": "$(refresh)",
+        "category": "PromptVC"
+      },
+      {
+        "command": "promptvc.init",
+        "title": "Init Store",
+        "category": "PromptVC"
+      },
+      {
+        "command": "promptvc.commitActive",
+        "title": "Commit Active File as Prompt",
+        "category": "PromptVC"
+      },
+      {
+        "command": "promptvc.viewVersion",
+        "title": "View",
+        "category": "PromptVC"
+      },
+      {
+        "command": "promptvc.diffWithPrevious",
+        "title": "Diff with Previous Version",
+        "category": "PromptVC"
+      },
+      {
+        "command": "promptvc.rollback",
+        "title": "Roll Back to This Version",
+        "category": "PromptVC"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "promptvc.refresh",
+          "when": "view == promptvc.promptsView",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "promptvc.viewVersion",
+          "when": "viewItem == promptvcVersion",
+          "group": "1_view@1"
+        },
+        {
+          "command": "promptvc.diffWithPrevious",
+          "when": "viewItem == promptvcVersion",
+          "group": "1_view@2"
+        },
+        {
+          "command": "promptvc.rollback",
+          "when": "viewItem == promptvcVersion",
+          "group": "2_modify@1"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "20.x",
+    "typescript": "^5.3.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0"
+  }
+}

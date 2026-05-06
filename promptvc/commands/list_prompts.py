@@ -9,6 +9,7 @@ from promptvc.utils.console import check_init, console
 
 def run(
     env: Optional[str] = typer.Option(None, "--env", "-e", help="Filter by environment"),
+    json_output: bool = typer.Option(False, "--json", help="Output as JSON"),
 ) -> None:
     """List all tracked prompts."""
     check_init()
@@ -28,6 +29,21 @@ def run(
             params.append(env)
         query += " GROUP BY p.id ORDER BY p.updated_at DESC"
         rows = conn.execute(query, params).fetchall()
+
+    if json_output:
+        import json
+        print(json.dumps([
+            {
+                "name": r["name"],
+                "description": r["description"],
+                "version_count": r["version_count"] or 0,
+                "latest_version": r["latest_version"],
+                "last_env": r["last_env"],
+                "updated_at": r["updated_at"] or "",
+            }
+            for r in rows
+        ]))
+        return
 
     if not rows:
         console.print("[dim]No prompts tracked yet. Run [bold]promptvc add <name>[/] to start.[/]")
