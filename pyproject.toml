@@ -46,6 +46,9 @@ Homepage = "https://github.com/ANIMESHIOLOGY/prompt-version-control"
 Repository = "https://github.com/ANIMESHIOLOGY/prompt-version-control"
 Issues = "https://github.com/ANIMESHIOLOGY/prompt-version-control/issues"
 
+[tool.hatch.build.targets.wheel]
+packages = ["promptvc"]
+
 [tool.ruff]
 line-length = 100
 target-version = "py310"
