@@ -3,9 +3,8 @@
 > Version, diff, rollback, and ship prompts like code.
 
 [![CI](https://github.com/ANIMESHIOLOGY/prompt-version-control/actions/workflows/ci.yml/badge.svg)](https://github.com/ANIMESHIOLOGY/prompt-version-control/actions)
-[![PyPI](https://img.shields.io/pypi/v/promptvc)](https://pypi.org/project/promptvc/)
-[![Python](https://img.shields.io/pypi/pyversions/promptvc)](https://pypi.org/project/promptvc/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://pypi.org/project/promptvc/)
 
 ## Why?
 
